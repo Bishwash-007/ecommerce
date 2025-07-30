@@ -15,7 +15,7 @@ const SignUp = () => {
     <View className="px-8 pt-36 h-full flex-1">
       <View className="gap-2 flex flex-col mb-4">
         <Text className="text-4xl text-primary">Create</Text>
-        <Text className="text-4xl text-primary">your account</Text>
+        <Text className="text-4xl text-primary">an account</Text>
       </View>
 
       <View className="flex gap-8 my-8 items-center">
@@ -33,11 +33,15 @@ const SignUp = () => {
           placeholder={"Password"}
           value={password}
           onChangeText={setPassword}
+          secureTextEntry={true}
+          secureToggle
         />
         <InputField
           placeholder={"Confirm Password"}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
+          secureTextEntry={true}
+          secureToggle
         />
       </View>
 

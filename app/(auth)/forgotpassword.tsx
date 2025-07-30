@@ -1,28 +1,27 @@
-import { View, Text } from "react-native";
-import React, { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import React from "react";
 import { Icon } from "@/components/ui/icon";
 import InputField from "@/components/custom/InputField";
 import { useRouter } from "expo-router";
 import { Button, ButtonText } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react-native";
+import { useAuthStore } from "@/hooks/useAuthstore";
 
 const ForgotPassword = () => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const { email, setEmail, emailError, validateForm } = useAuthStore();
 
   const handleSubmit = () => {
-    // Add validation or API logic here if needed
-    if (email.trim().length > 0) {
-      router.push("/(auth)/verification");
-    }
+    if (!validateForm({ checkPassword: false })) return;
+    router.push("/verification");
   };
-
   return (
     <View className="flex-1 px-8 pt-24">
-      {/* Top icon */}
-      <Icon />
+      <TouchableOpacity onPress={() => router.back()}>
+        <Icon as={ArrowLeft} size="xl" className="self-start mb-4" />
+      </TouchableOpacity>
 
-      {/* Heading + Description */}
-      <View className="mt-6 space-y-3">
+      <View className="mt-8 gap-4 flex flex-col items-start justify-start">
         <Text className="text-4xl text-primary">Forgot Password?</Text>
         <Text className="text-primary-400">
           Enter an email associated with your account and we&apos;ll send
@@ -30,19 +29,20 @@ const ForgotPassword = () => {
         </Text>
       </View>
 
-      {/* Email input */}
-      <View className="mt-16">
+      {/* email input */}
+      <View className="mt-8">
         <InputField
           placeholder="Enter your email"
           value={email}
           onChangeText={setEmail}
+          errorMessage={emailError}
         />
       </View>
       <Button
         size="lg"
         action="primary"
         className="h-14 w-[80%] self-center rounded-full mt-16"
-        onPress={handleSubmit}
+        onPress={() => handleSubmit()}
       >
         <ButtonText>Send Reset Link</ButtonText>
       </Button>
