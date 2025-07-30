@@ -27,7 +27,7 @@ const LogIn = () => {
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      transform: [{ translateY: -keyboard.height.value / 20 }],
+      transform: [{ translateY: -keyboard.height.value / 8 }],
     };
   });
 
@@ -48,7 +48,7 @@ const LogIn = () => {
   };
 
   return (
-    <Animated.View className="flex-1 px-8 pt-36" style={animatedStyles}>
+    <Animated.ScrollView className="flex-1 px-8 pt-36" style={animatedStyles}>
       <View className="mb-4 space-y-1 flex flex-col items-start justify-start">
         <Text className="text-4xl text-primary">Log into</Text>
         <Text className="text-4xl text-primary">your account</Text>
@@ -104,7 +104,7 @@ const LogIn = () => {
           Sign Up
         </Link>
       </Text>
-    </Animated.View>
+    </Animated.ScrollView>
   );
 };
 
