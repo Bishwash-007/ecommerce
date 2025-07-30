@@ -50,7 +50,7 @@ const InputField: React.FC<InputFieldProps> = ({
       {errorMessage && (
         <View className="flex flex-row items-center justify-start gap-2">
           <Icon as={CircleAlert} size="sm" color="red" />
-          <Text className="text-red-500 my-2">{errorMessage}</Text>
+          <Text className="text-red-500 mt-2">{errorMessage}</Text>
         </View>
       )}
     </View>
