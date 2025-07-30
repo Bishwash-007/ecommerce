@@ -10,12 +10,17 @@ import {
 } from "react-native";
 import { Icon } from "@/components/ui/icon";
 import { Button, ButtonText } from "@/components/ui/button";
-import { useRouter } from "expo-router";
-import { ArrowLeft } from "lucide-react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { ArrowLeft, CheckCircle } from "lucide-react-native";
+import { Modal, ModalBackdrop, ModalContent } from "@/components/ui/modal";
+import { Box } from "@/components/ui/box";
 
 const OTP_LENGTH = 6;
 
 const Verification: React.FC = () => {
+  const state = useLocalSearchParams();
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const isRegister = state.state === "Register";
   const router = useRouter();
   const [code, setCode] = useState<string[]>(Array(OTP_LENGTH).fill(""));
   const inputs = useRef<(TextInput | null)[]>([]);
@@ -52,6 +57,20 @@ const Verification: React.FC = () => {
     },
     [code, focusInput]
   );
+
+  const handleVerification = () => {
+    if (!isComplete) return;
+
+    if (isRegister) {
+      setShowModal(true);
+      setTimeout(() => {
+        setShowModal(false);
+        router.push("/home");
+      }, 1500);
+    } else {
+      router.push("/password");
+    }
+  };
 
   return (
     <View className="flex-1 px-8 pt-24">
@@ -94,10 +113,38 @@ const Verification: React.FC = () => {
           size="lg"
           action="primary"
           className="h-14 w-[80%] self-center rounded-full mt-16"
-          onPress={() => router.push("/(auth)/password")}
+          onPress={handleVerification}
         >
           <ButtonText>VERIFY</ButtonText>
         </Button>
+      )}
+
+      {isRegister && (
+        <Modal
+          isOpen={showModal}
+          onClose={() => {
+            setShowModal(false);
+          }}
+          className="rounded-2xl"
+        >
+          <ModalBackdrop />
+          <ModalContent className="max-w-[305px] items-center">
+            <View className="my-2">
+              <Text className="text-md text-primary text-center">
+                Account created successfully
+              </Text>
+            </View>
+            <View className="my-4">
+              <Box className="w-[64px] h-[64px] rounded-full bg-background-success items-center justify-center">
+                <Icon
+                  as={CheckCircle}
+                  className="stroke-success-600"
+                  size="xl"
+                />
+              </Box>
+            </View>
+          </ModalContent>
+        </Modal>
       )}
     </View>
   );
