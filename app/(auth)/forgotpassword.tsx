@@ -13,7 +13,10 @@ const ForgotPassword = () => {
 
   const handleSubmit = () => {
     if (!validateForm({ checkPassword: false })) return;
-    router.push("/verification");
+    router.replace({
+      pathname: "/verification",
+      params: { state: "Password" },
+    });
   };
   return (
     <View className="flex-1 px-8 pt-24">
