@@ -7,7 +7,6 @@ type User = {
   fullName: string;
   email: string;
   avatar?: string;
-  phoneNumber?: string;
   otp?: string;
 };
 
@@ -28,7 +27,6 @@ interface AuthState {
   setEmail: (email: string) => void;
   setPassword: (password: string) => void;
   setFullName: (fullName: string) => void;
-  setPhoneNumber: (phoneNumber: string) => void;
   setOtp: (otp: string) => void;
   setEmailError: (error: string) => void;
   setPasswordError: (error: string) => void;
@@ -39,8 +37,7 @@ interface AuthState {
   register: (
     fullName: string,
     email: string,
-    password: string,
-    phoneNumber: string
+    password: string
   ) => Promise<void>;
   verifyOtp: (email: string, otp: string) => Promise<void>;
   resetError: () => void;
@@ -68,7 +65,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
   setFullName: (fullName) => set({ fullName }),
-  setPhoneNumber: (phoneNumber) => set({ phoneNumber }),
   setOtp: (otp) => set({ otp }),
   setEmailError: (emailError) => set({ emailError }),
   setPasswordError: (passwordError) => set({ passwordError }),
@@ -121,14 +117,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
-  register: async (fullName, email, password, phoneNumber) => {
+  register: async (fullName, email, password) => {
     set({ isLoading: true, error: null });
     try {
       await axiosInstance.post("/users/register", {
         name: fullName,
         email,
         password,
-        phoneNumber,
       });
       set({ isLoading: false });
     } catch (err: any) {
