@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axiosInstance from "../lib/axios";
 import { storeToken, removeToken, hasToken } from "../lib/token";
 
-type User = {
+export type User = {
   _id: string;
   fullName: string;
   email: string;
