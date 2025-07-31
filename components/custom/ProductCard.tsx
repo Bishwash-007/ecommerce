@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   Text,
@@ -8,23 +9,32 @@ import {
 } from "react-native";
 
 type ProductCardProps = {
+  id: string;
   imageUri: ImageSourcePropType;
   price: string | number;
   title: string;
   horizontal?: boolean;
-  onPress?: () => void;
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({
   imageUri,
   price,
   title,
-  onPress,
   horizontal = false,
+  id,
 }) => {
+  const router = useRouter();
+  const handleOnpress = () => {
+    router.push({
+      pathname: "/(root)/product/product",
+      params: {
+        id,
+      },
+    });
+  };
   return (
     <TouchableOpacity
-      onPress={onPress}
+      onPress={handleOnpress}
       activeOpacity={0.8}
       className={`flex ${
         horizontal ? "flex-row gap-4 mt-4" : "flex-col gap-4"
