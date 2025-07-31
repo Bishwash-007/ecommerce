@@ -25,7 +25,7 @@ const ProductListSection: React.FC<ProductListSectionProps> = ({
       <View
         className={`flex-row items-center justify-between ${
           horizontal ? "my-6" : ""
-        } px-4`}
+        }`}
       >
         <Text className="text-xl font-bold">{title}</Text>
         <Text className="text-primary-200 text-base font-semibold">

@@ -5,69 +5,48 @@ import {
   Image,
   ImageSourcePropType,
   TouchableOpacity,
-  Dimensions,
 } from "react-native";
-import { BlurView } from "expo-blur";
 
-type Variant =
-  | "bottomLeft"
-  | "centered"
-  | "bottomRight"
-  | "verticalLeft"
-  | "verticalRight";
-
-type CollectionCardProps = {
-  image: ImageSourcePropType;
+type Props = {
   title: string;
-  subtitle?: string;
+  subtitle: string;
+  image: ImageSourcePropType;
+  reverse?: boolean;
   onPress?: () => void;
-  variant?: Variant;
 };
 
-const CollectionCard: React.FC<CollectionCardProps> = ({
-  image,
+export default function CollectionCard({
   title,
   subtitle,
+  image,
+  reverse = false,
   onPress,
-  variant = "bottomLeft",
-}) => {
-  const screenWidth = Dimensions.get("window").width;
-
-  const textPositionStyle = {
-    bottomLeft: "items-start justify-end",
-    centered: "items-center justify-center",
-    bottomRight: "items-end justify-end",
-    verticalLeft: "items-start justify-center rotate-90",
-    verticalRight: "items-end justify-center",
-  }[variant];
-
+}: Props) {
   return (
     <TouchableOpacity
       onPress={onPress}
-      activeOpacity={0.9}
-      style={{ width: screenWidth }}
-      className="my-4 overflow-hidden -mx-8 flex-row"
+      className={`bg-slate-100 -mx-8 flex-row items-center justify-between px-4 py-6 overflow-hidden ${
+        reverse ? "flex-row-reverse" : ""
+      }`}
     >
-      {/* Image Left */}
-      <Image source={image} className="h-48 w-1/2" resizeMode="contain" />
+      {/* Image Side */}
+      <View className="h-44 w-44 rounded-full overflow-hidden items-center">
+        <Image source={image} className="h-full w-full object-center" />
+      </View>
 
-      {/* Text Right with blur */}
-      <BlurView
-        intensity={40}
-        tint="dark"
-        className={`w-1/2 h-48 px-4 py-3 ${textPositionStyle} rounded-r-2xl`}
-      >
-        <View className="space-y-1">
-          <Text className="text-white text-xl font-bold">{title}</Text>
-          {subtitle && (
-            <Text className="text-white/80 text-sm font-medium">
-              {subtitle}
-            </Text>
-          )}
+      {/* Text Side */}
+      <View className="flex-1 px-4">
+        <View className="flex-row items-center gap-2 mb-2">
+          <View className="h-[80%] w-0.5 bg-slate-400 py-2" />
+          <Text
+            className="text-sm font-light text-primary-400 uppercase"
+            numberOfLines={2}
+          >
+            {subtitle}
+          </Text>
         </View>
-      </BlurView>
+        <Text className="text-3xl font-light uppercase" numberOfLines={3}>{title}</Text>
+      </View>
     </TouchableOpacity>
   );
-};
-
-export default CollectionCard;
+}

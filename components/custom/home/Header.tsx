@@ -9,7 +9,7 @@ const Header = () => {
       <TouchableOpacity>
         <Icon as={Menu} className="text-primary" size="xl" />
       </TouchableOpacity>
-      <Text className="text-2xl font-bold text-primary">GemStore</Text>
+      <Text className="text-2xl font-medium text-primary uppercase">Fashion</Text>
       <TouchableOpacity>
         <Icon as={BellIcon} className="text-primary" size="xl" />
       </TouchableOpacity>
