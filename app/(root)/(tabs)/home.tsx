@@ -61,6 +61,26 @@ const HomeScreen = () => {
             variant="verticalRight"
             image={products[2].imageUri}
           />
+          <CollectionCard
+            image={products[0].imageUri}
+            title="Summer Collection"
+            subtitle="2025 Drop"
+            variant="bottomLeft"
+            onPress={() => console.log("Tapped!")}
+          />
+
+          <CollectionCard
+            image={products[1].imageUri}
+            title="Minimal Fit"
+            variant="centered"
+          />
+
+          <CollectionCard
+            image={products[0].imageUri}
+            title="Edition Luxe"
+            subtitle="Limited Time"
+            variant="verticalRight"
+          />
         </>
       )}
     />
