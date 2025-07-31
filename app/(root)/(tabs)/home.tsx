@@ -5,28 +5,9 @@ import CollectionCarousel from "@/components/custom/home/CollectionCarousel";
 import Header from "@/components/custom/home/Header";
 import CollectionCard from "@/components/custom/home/CollectionCard";
 import ProductListSection from "@/components/custom/home/ProductListSection";
+import products from "@/data";
 
 const HomeScreen = () => {
-  const products = [
-    {
-      id: "1",
-      imageUri: require("@/assets/images/ui/image1.png"),
-      title: "Cool Jacket",
-      price: 49.99,
-    },
-    {
-      id: "2",
-      imageUri: require("@/assets/images/ui/image2.png"),
-      title: "Comfy Hoodie",
-      price: 39.99,
-    },
-    {
-      id: "3",
-      imageUri: require("@/assets/images/ui/image2.png"),
-      title: "Sneakers",
-      price: 89.99,
-    },
-  ];
 
   return (
     <FlatList
