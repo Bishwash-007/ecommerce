@@ -73,7 +73,7 @@ const Verification: React.FC = () => {
   };
 
   return (
-    <View className="flex-1 px-8 pt-24">
+    <View className="flex-1 px-8 pt-24 bg-white dark:bg-black">
       <TouchableOpacity onPress={() => router.back()}>
         <Icon as={ArrowLeft} size="xl" className="self-start mb-4" />
       </TouchableOpacity>

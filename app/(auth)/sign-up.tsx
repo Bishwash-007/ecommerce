@@ -61,7 +61,7 @@ const SignUp = () => {
 
   return (
     <Animated.ScrollView
-      className="px-8 pt-36 h-full flex-1"
+      className="px-8 pt-36 h-full flex-1  bg-white dark:bg-black"
       style={animatedStyles}
     >
       <View className="gap-2 flex flex-col mb-4">

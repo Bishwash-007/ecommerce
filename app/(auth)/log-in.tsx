@@ -48,7 +48,10 @@ const LogIn = () => {
   };
 
   return (
-    <Animated.ScrollView className="flex-1 px-8 pt-36" style={animatedStyles}>
+    <Animated.ScrollView
+      className="flex-1 px-8 pt-36 bg-white dark:bg-black"
+      style={animatedStyles}
+    >
       <View className="mb-4 space-y-1 flex flex-col items-start justify-start">
         <Text className="text-4xl text-primary">Log into</Text>
         <Text className="text-4xl text-primary">your account</Text>

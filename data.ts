@@ -1,4 +1,26 @@
-const products = [
+import { ImageSourcePropType } from "react-native";
+
+export type Review = {
+  id: string;
+  user: string;
+  rating: number;
+  comment: string;
+};
+
+export type Product = {
+  id: string;
+  imageUri: ImageSourcePropType;
+  title: string;
+  price: number;
+  description: string;
+  averageRating: number;
+  totalReviews: number;
+  sizeVariants: string[];
+  category: string;
+  reviews: Review[];
+};
+
+const products: Product[] = [
   {
     id: "1",
     imageUri: require("@/assets/images/ui/image7.png"),
