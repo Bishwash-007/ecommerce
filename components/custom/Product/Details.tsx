@@ -17,8 +17,6 @@ import {
   Pencil,
   ArrowLeft,
   Heart,
-  Star,
-  Handbag,
 } from "lucide-react-native";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import RenderStars from "./RenderStars";
@@ -63,10 +61,10 @@ const DetailsSection: React.FC<Product> = ({
         />
       </View>
 
-      <View className="rounded-2xl px-8">
-        <View className="flex-row items-start justify-between my-6">
-          <View>
-            <Text className="text-xl font-semibold text-primary">{title}</Text>
+      <View className="px-8">
+        <View className="flex-row items-center justify-between my-6">
+          <View className="flex flex-col">
+            <Text className="text-2xl font text-primary">{title}</Text>
             <View className="flex flex-row items-center gap-2 mt-2">
               <RenderStars averageRating={averageRating} />
               <Text className="text-xs font-light text-primary-400">
@@ -74,13 +72,13 @@ const DetailsSection: React.FC<Product> = ({
               </Text>
             </View>
           </View>
-          <Text className="text-3xl text-primary font-light">${price}</Text>
+          <Text className="text-3xl text-primary font-light">
+            {"$ " + price}
+          </Text>
         </View>
 
-        <View className="flex-row items-center justify-between mb-4">
-          <Text className="text-sm text-gray-500 dark:text-neutral-400">
-            {category}
-          </Text>
+        <View className="flex-col items-start gap-2">
+          <Text className="text-md font text-primary-400 mb-2">Size</Text>
           <View className="flex-row gap-2">
             {sizeVariants.map((size) => (
               <View
@@ -97,14 +95,14 @@ const DetailsSection: React.FC<Product> = ({
       <Accordion
         variant="unfilled"
         type="multiple"
-        defaultValue="item-2"
+        defaultValue={["item-2", "item-3"]}
         className="w-[90%] m-5 bg-white dark:bg-black gap-2"
       >
         {/* Description */}
         <AccordionItem value="item-1" className="rounded-lg">
           <AccordionHeader>
             <AccordionTrigger>
-              {({ isExpanded }) => (
+              {({ isExpanded }: { isExpanded: boolean }) => (
                 <>
                   <AccordionTitleText className="font-medium text-xl text-primary">
                     Description
@@ -125,7 +123,7 @@ const DetailsSection: React.FC<Product> = ({
         <AccordionItem value="item-2" className="rounded-lg">
           <AccordionHeader>
             <AccordionTrigger>
-              {({ isExpanded }) => (
+              {({ isExpanded }: { isExpanded: boolean }) => (
                 <>
                   <AccordionTitleText className="font-medium text-xl text-primary">
                     Reviews
@@ -202,7 +200,7 @@ const DetailsSection: React.FC<Product> = ({
         <AccordionItem value="item-3" className="rounded-lg">
           <AccordionHeader>
             <AccordionTrigger>
-              {({ isExpanded }) => (
+              {({ isExpanded }: { isExpanded: boolean }) => (
                 <>
                   <AccordionTitleText className="font-medium text-xl text-primary">
                     Similar Products
