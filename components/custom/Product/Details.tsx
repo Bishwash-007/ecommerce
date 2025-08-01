@@ -20,13 +20,7 @@ import {
   Star,
   Handbag,
 } from "lucide-react-native";
-import {
-  FlatList,
-  Image,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import RenderStars from "./RenderStars";
 import ReviewBreakdown from "./ReviewPercent";
 import ReviewCard from "./UserReviews";
@@ -69,24 +63,24 @@ const DetailsSection: React.FC<Product> = ({
         />
       </View>
 
-      <View className="rounded-2xl">
-        <View className="flex-row items-start justify-between mb-4 p-4">
-          <View className="gap-1">
+      <View className="rounded-2xl px-8">
+        <View className="flex-row items-start justify-between my-6">
+          <View>
             <Text className="text-xl font-semibold text-primary">{title}</Text>
-            {averageRating && (
-              <View className="flex-row items-center gap-1">
-                <Icon as={Star} size="sm" className="text-red-400" />
-                <Text className="text-sm text-primary-500 dark:text-neutral-400">
-                  {averageRating.toFixed(1)}
-                </Text>
-              </View>
-            )}
+            <View className="flex flex-row items-center gap-2 mt-2">
+              <RenderStars averageRating={averageRating} />
+              <Text className="text-xs font-light text-primary-400">
+                {"(" + reviews.length.toString() + ")"}
+              </Text>
+            </View>
           </View>
-          <Text className="text-lg font-bold text-primary-400">${price}</Text>
+          <Text className="text-3xl text-primary font-light">${price}</Text>
         </View>
 
-        <View className="flex-row items-center justify-between px-4 mb-4">
-          <Text className="text-sm text-gray-500 dark:text-neutral-400">{category}</Text>
+        <View className="flex-row items-center justify-between mb-4">
+          <Text className="text-sm text-gray-500 dark:text-neutral-400">
+            {category}
+          </Text>
           <View className="flex-row gap-2">
             {sizeVariants.map((size) => (
               <View
@@ -148,7 +142,9 @@ const DetailsSection: React.FC<Product> = ({
                   <Text className="text-3xl text-primary font-bold">
                     {averageRating}
                   </Text>
-                  <Text className="text-xs text-primary-400 uppercase">Out of 5</Text>
+                  <Text className="text-xs text-primary-400 uppercase">
+                    Out of 5
+                  </Text>
                 </View>
                 <View className="flex flex-col gap-1 items-end mt-2">
                   <RenderStars averageRating={averageRating} />
@@ -173,7 +169,9 @@ const DetailsSection: React.FC<Product> = ({
                   {reviews.length + " reviews"}
                 </Text>
                 <View className="flex flex-row items-center gap-2">
-                  <Text className="text-primary-400 uppercase text-xs">Write a review</Text>
+                  <Text className="text-primary-400 uppercase text-xs">
+                    Write a review
+                  </Text>
                   <Icon as={Pencil} size="xs" className="text-primary-400" />
                 </View>
               </View>
