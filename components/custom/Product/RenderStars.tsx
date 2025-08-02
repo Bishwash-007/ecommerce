@@ -1,9 +1,9 @@
-import { View, Text } from "react-native";
-import { Icon } from "@/components/ui/icon"; // adjust import
-import { Star, StarHalf } from "lucide-react-native"; // or any icon lib you’re using
+import { View } from "react-native";
+import { Icon } from "@/components/ui/icon";
+import { Star, StarHalf } from "lucide-react-native";
 
 const RenderStars = ({ averageRating }: { averageRating: number }) => {
-  const fullStars = Math.floor(averageRating); // e.g. 4.5 → 4
+  const fullStars = Math.floor(averageRating);
   const hasHalfStar = averageRating % 1 >= 0.5;
 
   return (

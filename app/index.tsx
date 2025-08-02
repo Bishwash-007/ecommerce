@@ -1,6 +1,5 @@
 import React from "react";
 import { Redirect } from "expo-router";
-import { useAuthStore, User } from "@/hooks/useAuthstore";
 
 const App = () => {
   // Uncomment this when using real auth state
@@ -14,8 +13,7 @@ const App = () => {
     return (
       <Redirect
         href={{
-          pathname: "/(root)/product/product",
-          params: { id: "1" },
+          pathname: "/mycart/cart",
         }}
       />
     );
