@@ -18,9 +18,41 @@ export type Product = {
   sizeVariants: string[];
   category: string;
   reviews: Review[];
+  colorVariants: string[];
 };
 
-const products: Product[] = [
+export type CartItem = {
+  id: string;
+  title: string;
+  price: number;
+  sizeVariant: string;
+  colorVariant: string;
+  quantity: number;
+  imageUri: ImageSourcePropType;
+};
+
+export const cart: CartItem[] = [
+  {
+    id: "1",
+    title: "Cool Jacket",
+    price: 49.99,
+    sizeVariant: "M",
+    colorVariant: "Black",
+    quantity: 1,
+    imageUri: require("@/assets/images/ui/image7.png"),
+  },
+  {
+    id: "2",
+    title: "Comfy Hoodie",
+    price: 39.99,
+    sizeVariant: "L",
+    colorVariant: "Gray",
+    quantity: 2,
+    imageUri: require("@/assets/images/ui/image2.png"),
+  },
+];
+
+export const products: Product[] = [
   {
     id: "1",
     imageUri: require("@/assets/images/ui/image7.png"),
@@ -32,6 +64,7 @@ const products: Product[] = [
     totalReviews: 87,
     sizeVariants: ["S", "M", "L", "XL"],
     category: "Jackets",
+    colorVariants: ["Black", "Navy", "Olive"],
     reviews: [
       {
         id: "r1",
@@ -57,6 +90,7 @@ const products: Product[] = [
     averageRating: 4.8,
     totalReviews: 112,
     sizeVariants: ["M", "L", "XL"],
+    colorVariants: ["Gray", "Black", "Blue"],
     category: "Hoodies",
     reviews: [
       {
@@ -83,6 +117,7 @@ const products: Product[] = [
     averageRating: 4.2,
     totalReviews: 56,
     sizeVariants: ["7", "8", "9", "10", "11"],
+    colorVariants: ["White", "Black", "Red"],
     category: "Footwear",
     reviews: [
       {
@@ -109,7 +144,9 @@ const products: Product[] = [
     averageRating: 4.7,
     totalReviews: 76,
     sizeVariants: ["28", "30", "32", "34", "36"],
+    colorVariants: ["Blue", "Black"],
     category: "Bottoms",
+
     reviews: [
       {
         id: "r7",
@@ -135,6 +172,7 @@ const products: Product[] = [
     averageRating: 4.4,
     totalReviews: 34,
     sizeVariants: ["S", "M", "L", "XL", "XXL"],
+    colorVariants: ["White", "Black", "Gray"],
     category: "T-shirts",
     reviews: [
       {
@@ -161,6 +199,7 @@ const products: Product[] = [
     averageRating: 4.6,
     totalReviews: 61,
     sizeVariants: ["S", "M", "L", "XL"],
+    colorVariants: ["White", "Black", "Gray"],
     category: "Shirts",
     reviews: [
       {
@@ -178,5 +217,3 @@ const products: Product[] = [
     ],
   },
 ];
-
-export default products;
