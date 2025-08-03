@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React, { useState } from "react";
 import InputField from "@/components/custom/InputField";
 import {
@@ -19,136 +19,102 @@ const Shipping = () => {
   const [zipcode, setZipcode] = useState("");
   const [couponCode, setCouponCode] = useState("");
   const [deliveryOption, setDeliveryOption] = useState("standard");
+  const deliveryOptions = [
+    { value: "free", label: "Free Delivery (5–7 business days)" },
+    { value: "standard", label: "$5.00 Standard Delivery (3–5 business days)" },
+    { value: "express", label: "$9.99 Express Delivery (1–2 business days)" },
+  ];
 
   return (
-    <View>
-      <View className="flex-col mb-8 gap-4">
-        <Text className="text-xl font-medium text-primary-400">
-          Shipping Details
+    <ScrollView className="flex-1 pb-8 bg-background" showsVerticalScrollIndicator={false}>
+      {/* Shipping Info */}
+      <View className="pb-8">
+        <Text className="text-xl font-semibold text-primary-400 mb-4">
+          {"Shipping Details"}
         </Text>
-        <InputField
-          placeholder="First Name"
-          value={firstname}
-          onChangeText={setFirstname}
-        />
-        <InputField
-          placeholder="Last Name"
-          value={lastname}
-          onChangeText={setLastname}
-        />
-        <InputField
-          placeholder="Address"
-          value={address}
-          onChangeText={setAddress}
-        />
-        <InputField placeholder="City" value={city} onChangeText={setCity} />
-        <InputField
-          placeholder="Zip Code"
-          value={zipcode}
-          onChangeText={setZipcode}
-        />
+        <View className="gap-y-4">
+          <InputField
+            placeholder="First Name"
+            value={firstname}
+            onChangeText={setFirstname}
+          />
+          <InputField
+            placeholder="Last Name"
+            value={lastname}
+            onChangeText={setLastname}
+          />
+          <InputField
+            placeholder="Address"
+            value={address}
+            onChangeText={setAddress}
+          />
+          <InputField placeholder="City" value={city} onChangeText={setCity} />
+          <InputField
+            placeholder="Zip Code"
+            value={zipcode}
+            onChangeText={setZipcode}
+          />
+        </View>
       </View>
 
-      {/* Payment Method */}
-      <View className="mb-8">
-        <Text className="text-xl font-medium text-primary-400 mb-4">
-          Payment Method
+      {/* Delivery Options */}
+      <View className="mb-10">
+        <Text className="text-xl font-semibold text-primary-400 mb-4">
+          {"Delivery Options"}
         </Text>
         <RadioGroup
           value={deliveryOption}
           onChange={setDeliveryOption}
-          className="flex-col gap-4"
+          className="space-y-6"
         >
-          {/* Option 1 */}
-          <Radio value="free" size="md">
-            <RadioIndicator className="flex items-center justify-center">
-              <RadioIcon />
-            </RadioIndicator>
-            <View className="flex-col px-2">
-              <View className="flex-row items-center gap-2">
-                <Text className="text-xl font-light text-primary-400">
-                  Free
-                </Text>
-                <Text className="text-xl font-light text-primary-400">
-                  Delivery to home
-                </Text>
-              </View>
-              <Text className="text-sm font-light text-primary-400">
-                Delivery from 5 to 7 business days
-              </Text>
+          {/* Free Delivery */}
+
+          {deliveryOptions.map(({ value, label }) => (
+            <View key={value} className="flex-col items-start gap-4">
+              <Radio value={value.toString()}>
+                <RadioIndicator className="items-center justify-center">
+                  <RadioIcon as={CircleIcon} />
+                </RadioIndicator>
+                <View className="pl-3">
+                  <Text className="text-base font-medium text-primary-400">
+                    {label.split(" (")[0]}
+                  </Text>
+                  <Text className="text-sm text-primary-300">
+                    {label.split(" (")[1].replace(")", "")}
+                  </Text>
+                </View>
+              </Radio>
+              <Divider className="my-2" />
             </View>
-          </Radio>
-
-          <Divider className="my-4" />
-
-          {/* Option 2 */}
-          <Radio value="standard" size="md">
-            <RadioIndicator>
-              <RadioIcon as={CircleIcon} />
-            </RadioIndicator>
-            <View className="flex-col px-2">
-              <View className="flex-row items-center gap-2">
-                <Text className="text-xl font-light text-primary-400">
-                  $5.00
-                </Text>
-                <Text className="text-xl font-light text-primary-400">
-                  Delivery to home
-                </Text>
-              </View>
-              <Text className="text-sm font-light text-primary-400">
-                Delivery from 3 to 5 business days
-              </Text>
-            </View>
-          </Radio>
-
-          <Divider className="my-4" />
-
-          {/* Option 3 */}
-          <Radio value="express" size="md">
-            <RadioIndicator>
-              <RadioIcon as={CircleIcon} />
-            </RadioIndicator>
-            <View className="flex-col px-2">
-              <View className="flex-row items-center gap-2">
-                <Text className="text-xl font-medium text-primary-400">
-                  $9.99
-                </Text>
-                <Text className="text-xl font-light text-primary-400">
-                  Fast Delivery
-                </Text>
-              </View>
-              <Text className="text-sm font-light text-primary-400">
-                Delivery from 1 to 2 business days
-              </Text>
-            </View>
-          </Radio>
+          ))}
         </RadioGroup>
       </View>
 
       {/* Coupon Code */}
-      <View className="pb-8">
-        <Text className="text-xl font-medium text-primary-400 mb-4">
+      <View className="mb-10">
+        <Text className="text-xl font-semibold text-primary-400 mb-4">
           Coupon Code
         </Text>
-
-        <View className="flex-row flex-1 items-center gap-2 justify-between w-full">
+        <View className="flex-row gap-3 items-center justify-between">
           <InputField
-            placeholder="Coupon Code"
+            placeholder="Enter Coupon"
             value={couponCode}
             onChangeText={setCouponCode}
-            className="w-[80%]"
+            className="w-3/4"
           />
           <Button
             size="sm"
             variant="outline"
             action="primary"
-            className="flex-shrink-0 px-4 h-10 items-start justify-around rounded-full"
+            className="rounded-full h-10 px-4 self-end"
           >
-            <Text className="text-primary-400 mt-2 text-base">Apply</Text>
+            <Text className="text-primary-400 text-base font-medium">
+              Apply
+            </Text>
           </Button>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

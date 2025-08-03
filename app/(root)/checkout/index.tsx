@@ -19,7 +19,7 @@ const CheckoutScreen = () => {
   >("shipping");
 
   const Header = () => (
-    <View className="flex-row items-center justify-between py-4">
+    <View className="flex-row items-center justify-between">
       <TouchableOpacity onPress={() => router.back()}>
         <Icon as={ChevronLeft} size="xl" className="text-primary" />
       </TouchableOpacity>
@@ -65,7 +65,7 @@ const CheckoutScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-white dark:bg-neutral-900 px-8 pt-16 pb-8">
+    <ScrollView className="bg-white dark:bg-neutral-900 px-8 pt-12 pb-8">
       <Header />
       <Tabbar />
       {activeTab === "shipping" && <Shipping />}

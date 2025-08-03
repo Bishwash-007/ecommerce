@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { Icon } from "@/components/ui/icon";
 import { Banknote, CreditCard, Ellipsis, Check } from "lucide-react-native";
@@ -25,11 +25,14 @@ const Payment = () => {
   const router = useRouter();
 
   return (
-    <View className="flex-1 pb-40 bg-white dark:bg-black relative">
+    <ScrollView
+      className="flex-1 pb-20 bg-white dark:bg-black relative"
+      showsVerticalScrollIndicator={false}
+    >
       <Text className="text-xl font-medium text-primary-400 mb-4">Payment</Text>
 
       {/* Payment Method Options */}
-      <View className="flex-row justify-evenly mb-6">
+      <View className="flex-row justify-between mb-6">
         {paymentOptions.map(({ icon, label }) => (
           <TouchableOpacity
             key={label}
@@ -48,9 +51,7 @@ const Payment = () => {
               }`}
             />
             <Text
-              className={`${
-                selectedMethod === label ? "text-white" : "text"
-              }`}
+              className={`${selectedMethod === label ? "text-white" : "text"}`}
             >
               {label}
             </Text>
@@ -65,7 +66,7 @@ const Payment = () => {
       <Text className="text-center text-sm text-primary-400 mt-4 mb-2">
         Or check out with
       </Text>
-      <View className="flex-row items-center justify-center gap-4">
+      <View className="flex-row items-center justify-between gap-4">
         {walletOptions.map((img, idx) => (
           <TouchableOpacity key={idx} className="w-16 h-16">
             <Image
@@ -78,8 +79,8 @@ const Payment = () => {
       </View>
 
       {/* Order Summary Footer */}
-      <View className="px-8 pb-8 pt-6 bg-white dark:bg-black rounded-t-2xl border-slate-100/20 border-t-2">
-        <View className="gap-2">
+      <View className="pb-8 pt-6 bg-white dark:bg-black rounded-t-2xl border-slate-100/20 border-t-2">
+        <View className="gap-4">
           <View className="flex-row justify-between">
             <Text className="font-light text-sm">Product Price</Text>
             <Text className="font-light text-sm">$100</Text>
@@ -110,21 +111,19 @@ const Payment = () => {
               <Text className="text-primary-500">Terms of Service</Text>
             </Text>
           </View>
-
-          {/* Place Order Button */}
-          <Button
-            className="rounded-3xl h-14 mt-4"
-            onPress={() => {
-              if (acceptedTerms) {
-                router.push("/");
-              }
-            }}
-          >
-            <ButtonText>Place Order</ButtonText>
-          </Button>
         </View>
       </View>
-    </View>
+      <Button
+        className="rounded-3xl h-14 mt-4"
+        onPress={() => {
+          if (acceptedTerms) {
+            router.push("/");
+          }
+        }}
+      >
+        <ButtonText>Place Order</ButtonText>
+      </Button>
+    </ScrollView>
   );
 };
 
