@@ -5,7 +5,7 @@ import { Icon } from "@/components/ui/icon";
 import { ChevronLeft, ShoppingCart } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { Button, ButtonText } from "@/components/ui/button";
-import CartItem from "@/components/cart/CartItem";
+import CartItem from "@/components/custom/cart/CartItem";
 
 const Cart = () => {
   const router = useRouter();
@@ -76,9 +76,7 @@ const Cart = () => {
             </View>
 
             <Button className="rounded-3xl h-14 mt-2" onPress={() => {}}>
-              <ButtonText
-                onPress={() => router.push("/(root)/checkout/shipping")}
-              >
+              <ButtonText onPress={() => router.push("/checkout")}>
                 Proceed to checkout
               </ButtonText>
             </Button>
