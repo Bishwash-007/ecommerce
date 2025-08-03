@@ -1,12 +1,8 @@
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
-import products from "@/data";
+import { cart } from "@/data";
 import { Icon } from "@/components/ui/icon";
-import {
-  ChevronLeft,
-  EqualApproximatelyIcon,
-  ShoppingCart,
-} from "lucide-react-native";
+import { ChevronLeft, ShoppingCart } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { Button, ButtonText } from "@/components/ui/button";
 import CartItem from "@/components/cart/CartItem";
@@ -14,13 +10,11 @@ import CartItem from "@/components/cart/CartItem";
 const Cart = () => {
   const router = useRouter();
 
-  const userCart = [];
-
   return (
     <View className="flex-1 bg-white dark:bg-black px-8 pt-12 relative">
       {/* FlatList with padding to avoid being hidden behind footer */}
       <FlatList
-        data={userCart}
+        data={cart}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <CartItem
@@ -63,7 +57,7 @@ const Cart = () => {
 
       {/* Sticky footer */}
 
-      {userCart.length > 0 && (
+      {cart.length > 0 && (
         <View className="absolute bottom-0 left-0 right-0 px-8 pb-8 pt-6 bg-white dark:bg-black rounded-t-2xl border-slate-100/20 border-t-2">
           <View className="flex flex-col gap-2">
             <View className="flex flex-row items-center justify-between">

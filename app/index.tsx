@@ -13,7 +13,7 @@ const App = () => {
     return (
       <Redirect
         href={{
-          pathname: "/mycart/cart",
+          pathname: "/checkout",
         }}
       />
     );
