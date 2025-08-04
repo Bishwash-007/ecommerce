@@ -29,7 +29,7 @@ const Complete = () => {
 
       <Button
         className="rounded-3xl h-14 mt-12"
-        onPress={() => router.push("/")}
+        onPress={() => router.push("/home")}
       >
         <ButtonText className="text-base font-semibold">
           Continue Shopping

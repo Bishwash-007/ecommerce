@@ -217,3 +217,76 @@ export const products: Product[] = [
     ],
   },
 ];
+
+export const mockOrders: {
+  id: string;
+  title: string;
+  imageUri: any;
+  trackingNumber?: string;
+  onPress?: () => void;
+  status: "pending" | "delivered" | "cancelled";
+  subtotal: number;
+  datePlaced: string;
+  quantity: number;
+}[] = [
+  {
+    id: "10001",
+    title: "Nike Air Max 270",
+    imageUri: require("@/assets/images/ui/image1.png"),
+    trackingNumber: "TNX-23910",
+    status: "pending",
+    subtotal: 129.99,
+    datePlaced: "2025-08-01",
+    quantity: 1,
+  },
+  {
+    id: "10002",
+    title: "Apple Watch SE",
+    imageUri: require("@/assets/images/ui/image1.png"),
+    trackingNumber: "AW-SE-8841",
+    status: "delivered",
+    subtotal: 299.99,
+    datePlaced: "2025-07-29",
+    quantity: 1,
+  },
+  {
+    id: "10003",
+    title: "Adidas Ultraboost",
+    imageUri: require("@/assets/images/ui/image1.png"),
+    trackingNumber: "ADB-74518",
+    status: "cancelled",
+    subtotal: 159.49,
+    datePlaced: "2025-07-20",
+    quantity: 2,
+  },
+  {
+    id: "10004",
+    title: "Samsung Galaxy Buds 2",
+    imageUri: require("@/assets/images/ui/image1.png"),
+    trackingNumber: "SG-BD21-9203",
+    status: "delivered",
+    subtotal: 89.99,
+    datePlaced: "2025-07-18",
+    quantity: 1,
+  },
+  {
+    id: "10005",
+    title: "UNIQLO Cotton T-Shirt Pack",
+    imageUri: require("@/assets/images/ui/image1.png"),
+    trackingNumber: "UQ-TS-PACK-334",
+    status: "pending",
+    subtotal: 49.99,
+    datePlaced: "2025-08-02",
+    quantity: 3,
+  },
+  {
+    id: "10006",
+    title: "Sony WH-1000XM5 Headphones",
+    imageUri: require("@/assets/images/ui/image1.png"),
+    trackingNumber: "SONY-HDPH-1005",
+    status: "cancelled",
+    subtotal: 399.99,
+    datePlaced: "2025-07-15",
+    quantity: 1,
+  },
+];

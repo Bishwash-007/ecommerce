@@ -1,14 +1,14 @@
 import React from "react";
 import { Tabs, useSegments } from "expo-router";
 import { Icon } from "@/components/ui/icon";
-import { Home, Search, ShoppingCart, User } from "lucide-react-native";
+import { Handbag, Home, Search, User } from "lucide-react-native";
 
 export default function TabsLayout() {
   const segments = useSegments();
   const currentScreen = segments[segments.length - 1];
 
   // Define screens where the tab bar should be hidden
-  const screensToHideTabBar = ["cart", "search"];
+  const screensToHideTabBar = ["order/orderDetails"];
 
   const hideTabBar = screensToHideTabBar.includes(currentScreen);
   return (
@@ -33,8 +33,8 @@ export default function TabsLayout() {
             case "search/index":
               iconComponent = Search;
               break;
-            case "mycart":
-              iconComponent = ShoppingCart;
+            case "order":
+              iconComponent = Handbag;
               break;
             case "profile":
               iconComponent = User;
@@ -55,7 +55,7 @@ export default function TabsLayout() {
     >
       <Tabs.Screen name="home" />
       <Tabs.Screen name="search/index" />
-      <Tabs.Screen name="mycart" options={{ tabBarHideOnKeyboard: true }} />
+      <Tabs.Screen name="order" options={{ tabBarHideOnKeyboard: true }} />
       <Tabs.Screen name="profile" />
     </Tabs>
   );

@@ -5,10 +5,9 @@ import CollectionCarousel from "@/components/custom/home/CollectionCarousel";
 import Header from "@/components/custom/home/Header";
 import CollectionCard from "@/components/custom/home/CollectionCard";
 import ProductListSection from "@/components/custom/home/ProductListSection";
-import products from "@/data";
+import { products } from "@/data";
 
 const HomeScreen = () => {
-
   return (
     <FlatList
       data={[]}
@@ -21,7 +20,7 @@ const HomeScreen = () => {
       }}
       ListHeaderComponent={() => (
         <View className="gap-8">
-          <Header />
+          <Header title={"Gemstore"} />
           <IconRow />
           <CollectionCarousel />
 

@@ -13,7 +13,8 @@ const App = () => {
     return (
       <Redirect
         href={{
-          pathname: "/checkout",
+          pathname: "/order/rateOrder",
+          params: { id: "1" },
         }}
       />
     );

@@ -38,6 +38,7 @@ const ProductListSection: React.FC<ProductListSectionProps> = ({
         keyExtractor={(item) => item.id}
         horizontal={horizontal}
         showsHorizontalScrollIndicator={false}
+        initialNumToRender={2}
         scrollEventThrottle={16}
         renderItem={({ item }: ListRenderItemInfo<Product>) =>
           horizontal ? (

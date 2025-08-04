@@ -9,7 +9,7 @@ import {
   Heart,
   Pencil,
 } from "lucide-react-native";
-import products, { Product } from "@/data";
+import { Product, products } from "@/data";
 
 import {
   Accordion,

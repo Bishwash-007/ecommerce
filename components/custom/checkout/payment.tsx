@@ -19,7 +19,7 @@ const walletOptions = [
   require("@/assets/images/ui/visa.png"),
 ];
 
-const Payment = () => {
+const Payment = ({ onComplete }: { onComplete: () => void }) => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState("Credit Card");
   const router = useRouter();
@@ -117,7 +117,9 @@ const Payment = () => {
         className="rounded-3xl h-14 mt-4"
         onPress={() => {
           if (acceptedTerms) {
-            router.push("/");
+            onComplete();
+          } else {
+            alert("You must accept the terms");
           }
         }}
       >

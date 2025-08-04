@@ -76,7 +76,7 @@ const Cart = () => {
             </View>
 
             <Button className="rounded-3xl h-14 mt-2" onPress={() => {}}>
-              <ButtonText onPress={() => router.push("/checkout")}>
+              <ButtonText onPress={() => router.push("/(root)/checkout")}>
                 Proceed to checkout
               </ButtonText>
             </Button>

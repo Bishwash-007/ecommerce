@@ -11,7 +11,7 @@ import { CircleIcon } from "lucide-react-native";
 import { Divider } from "@/components/ui/divider";
 import { Button } from "@/components/ui/button";
 
-const Shipping = () => {
+const Shipping = ({ onComplete }: { onComplete: () => void }) => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [address, setAddress] = useState("");
@@ -25,8 +25,13 @@ const Shipping = () => {
     { value: "express", label: "$9.99 Express Delivery (1–2 business days)" },
   ];
 
+  const isFormValid = firstname && lastname && address && city && zipcode;
+
   return (
-    <ScrollView className="flex-1 pb-8 bg-background" showsVerticalScrollIndicator={false}>
+    <ScrollView
+      className="flex-1 pb-16 bg-background"
+      showsVerticalScrollIndicator={false}
+    >
       {/* Shipping Info */}
       <View className="pb-8">
         <Text className="text-xl font-semibold text-primary-400 mb-4">
@@ -114,6 +119,22 @@ const Shipping = () => {
           </Button>
         </View>
       </View>
+
+      {/* Continue Button */}
+      <Button
+        className="rounded-3xl h-14 mt-4"
+        onPress={() => {
+          if (isFormValid) {
+            onComplete();
+          } else {
+            alert("Please fill out all shipping fields");
+          }
+        }}
+      >
+        <Text className="text-base font-semibold text-white">
+          Proceed to Payment
+        </Text>
+      </Button>
     </ScrollView>
   );
 };
