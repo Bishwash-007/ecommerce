@@ -128,9 +128,9 @@ const OrderDetails = () => {
         <Button
           variant="outline"
           className="w-[50%] h-14 rounded-2xl"
-          onPress={() => router.push("/(root)/(tabs)/home")}
+          onPress={() => router.push("/order/trackOrder")}
         >
-          <Text className="text-base font-semibold">Return Home</Text>
+          <Text className="text-base font-semibold">Track Order</Text>
         </Button>
         <Button
           variant="outline"

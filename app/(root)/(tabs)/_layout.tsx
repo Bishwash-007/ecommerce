@@ -30,7 +30,7 @@ export default function TabsLayout() {
             case "home":
               iconComponent = Home;
               break;
-            case "search/index":
+            case "search":
               iconComponent = Search;
               break;
             case "order":
@@ -54,7 +54,7 @@ export default function TabsLayout() {
       })}
     >
       <Tabs.Screen name="home" />
-      <Tabs.Screen name="search/index" />
+      <Tabs.Screen name="search" options={{ tabBarHideOnKeyboard: true }} />
       <Tabs.Screen name="order" options={{ tabBarHideOnKeyboard: true }} />
       <Tabs.Screen name="profile" />
     </Tabs>
